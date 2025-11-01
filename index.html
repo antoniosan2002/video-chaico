@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Para Chaico con Cariño - Olvidala Sinfónico</title>
+    <style>
+        /* Estilos generales */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            /* Nuevo fondo degradado con colores suaves y sinfónicos */
+            background: linear-gradient(135deg, #e0eafc, #cfdef3, #aed6f1, #9bbde4);
+            /* Azul cielo, lavanda, grises suaves */
+            background-size: 400% 400%;
+            /* Para el efecto de animación del degradado */
+            animation: backgroundAnimation 15s ease infinite;
+            /* Animación de fondo */
+            overflow: hidden;
+            /* Oculta barras de desplazamiento */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Fuente más moderna */
+            color: #333;
+            /* Color de texto más suave */
+        }
+
+        /* Animación del fondo */
+        @keyframes backgroundAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Contenedor principal para centrar el video y las imágenes */
+        .container {
+            position: relative;
+            width: 90vw;
+            /* Un poco más de ancho para el contenedor */
+            height: 90vh;
+            /* Un poco más de altura */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            /* Opcional: para visualización */
+            /* border: 1px solid rgba(0,0,0,0.1); */
+        }
+
+        /* Estilo para el video */
+        #chaico-video {
+            width: 350px;
+            /* Tamaño del video un poco más grande */
+            height: 550px;
+            /* Tamaño del video un poco más grande */
+            border-radius: 25px;
+            /* Bordes más redondeados */
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+            /* Sombra más pronunciada */
+            object-fit: cover;
+            z-index: 10;
+            /* Asegura que esté por encima de las imágenes */
+            border: 5px solid rgba(255, 255, 255, 0.7);
+            /* Borde blanco sutil */
+        }
+
+        /* Estilo base para todas las imágenes flotantes */
+        .flotante {
+            position: absolute;
+            /* Posicionamiento absoluto */
+            width: 150px;
+            /* Imágenes más grandes */
+            height: 150px;
+            /* Imágenes más grandes */
+            border-radius: 20px;
+            /* Bordes redondeados para el cuadrado */
+            object-fit: cover;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+            /* Sombra ajustada */
+            transition: transform 0.5s ease, box-shadow 0.3s ease;
+            /* Transición para hover */
+            border: 3px solid rgba(255, 255, 255, 0.6);
+            /* Borde blanco sutil */
+        }
+
+        /* Animación de flotación (movimiento) */
+        @keyframes flotar {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+
+            33% {
+                transform: translate(25px, -20px) rotate(7deg) scale(1.02);
+            }
+
+            66% {
+                transform: translate(-15px, 15px) rotate(-5deg) scale(0.98);
+            }
+
+            100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+            }
+        }
+
+        /* Posicionamiento y animación individual de cada imagen (ajusta los valores top/left/animation para cambiar la posición y el movimiento) */
+        /* He ajustado las posiciones para que estén más distribuidas alrededor del video más grande */
+        #img-1 {
+            top: 3%;
+            left: 15%;
+            animation: flotar 8s infinite alternate ease-in-out;
+        }
+
+        #img-2 {
+            top: 18%;
+            right: 10%;
+            animation: flotar 7s infinite alternate-reverse ease-in-out;
+        }
+
+        #img-3 {
+            bottom: 8%;
+            left: 8%;
+            animation: flotar 9s infinite alternate ease-in-out;
+        }
+
+        #img-4 {
+            bottom: 15%;
+            right: 12%;
+            animation: flotar 6s infinite alternate-reverse ease-in-out;
+        }
+
+        #img-5 {
+            top: 5%;
+            left: 40%;
+            animation: flotar 10s infinite alternate ease-in-out;
+        }
+
+        #img-6 {
+            top: 60%;
+            right: 5%;
+            animation: flotar 7.5s infinite alternate ease-in-out;
+        }
+
+        #img-7 {
+            bottom: 5%;
+            left: 35%;
+            animation: flotar 8.5s infinite alternate-reverse ease-in-out;
+        }
+
+        #img-8 {
+            top: 25%;
+            left: 5%;
+            animation: flotar 9.5s infinite alternate ease-in-out;
+        }
+
+        #img-9 {
+            top: 50%;
+            left: 10%;
+            animation: flotar 6.5s infinite alternate-reverse ease-in-out;
+        }
+
+        #img-10 {
+            top: 40%;
+            right: 8%;
+            animation: flotar 7.8s infinite alternate ease-in-out;
+        }
+
+        #img-11 {
+            top: 20%;
+            left: 60%;
+            animation: flotar 9.2s infinite alternate-reverse ease-in-out;
+        }
+
+        #img-12 {
+            bottom: 20%;
+            left: 25%;
+            animation: flotar 8.2s infinite alternate ease-in-out;
+        }
+
+        /* Efecto al pasar el ratón (opcional) */
+        .flotante:hover {
+            transform: scale(1.1) rotate(15deg) !important;
+            /* Más grande y más rotación */
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.35);
+            /* Sombra más intensa al hover */
+        }
+
+        /* Mensaje inicial */
+        #inicio-msg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            /* Fondo más oscuro */
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 1000;
+            cursor: pointer;
+            padding: 20px;
+            backdrop-filter: blur(5px);
+            /* Efecto de desenfoque en el fondo */
+        }
+
+        #inicio-msg h1 {
+            font-size: 3em;
+            /* Título más grande */
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
+            /* Sombra al texto */
+        }
+
+        #inicio-msg p {
+            font-size: 1.5em;
+            /* Párrafo más grande */
+            margin-bottom: 30px;
+        }
+
+        #inicio-msg button {
+            padding: 12px 25px;
+            /* Botón más grande */
+            margin-top: 20px;
+            font-size: 1.3em;
+            cursor: pointer;
+            background-color: #7a98c2;
+            /* Un azul más sinfónico */
+            color: white;
+            border: none;
+            border-radius: 8px;
+            /* Bordes más redondeados */
+            box-shadow: 0 8px 20px rgba(122, 152, 194, 0.5);
+            /* Sombra acorde al botón */
+            transition: background-color 0.3s ease, transform 0.2s ease;
+        }
+
+        #inicio-msg button:hover {
+            background-color: #6582ac;
+            /* Color más oscuro al hover */
+            transform: translateY(-3px);
+            /* Pequeño efecto de elevación */
+        }
+    </style>
+</head>
+
+<body>
+
+    <audio id="musica-fondo" loop>
+        <source src="otra noche.mp3" type="audio/mpeg"> Tu navegador no soporta el elemento de audio.
+    </audio>
+
+    <div class="container">
+
+        <video id="chaico-video" src="video de chaico.mp4" autoplay muted loop></video>
+
+        <img id="img-1" class="flotante" src="1.jpg" alt="Imagen de Chaico 1">
+        <img id="img-2" class="flotante" src="2.jpg" alt="Imagen de Chaico 2">
+        <img id="img-3" class="flotante" src="3.jpg" alt="Imagen de Chaico 3">
+        <img id="img-4" class="flotante" src="4.jpg" alt="Imagen de Chaico 4">
+        <img id="img-5" class="flotante" src="5.jpg" alt="Imagen de Chaico 5">
+        <img id="img-6" class="flotante" src="6.jpg" alt="Imagen de Chaico 6">
+        <img id="img-7" class="flotante" src="7.jpg" alt="Imagen de Chaico 7">
+        <img id="img-8" class="flotante" src="8.jpg" alt="Imagen de Chaico 8">
+        <img id="img-9" class="flotante" src="9.jpg" alt="Imagen de Chaico 9">
+        <img id="img-10" class="flotante" src="10.jpg" alt="Imagen de Chaico 10">
+        <img id="img-11" class="flotante" src="11.jpg" alt="Imagen de Chaico 11">
+        <img id="img-12" class="flotante" src="12.jpg" alt="Imagen de Chaico 12">
+
+    </div>
+
+    <div id="inicio-msg">
+        <h1>¡Bienvenido a la página de Chaico!</h1>
+        <p>Una experiencia sinfónica inspirada en Nicki Nicole.</p>
+        <button onclick="iniciarPagina()">Entrar</button>
+    </div>
+
+    <script>
+        function iniciarPagina() {
+            const musica = document.getElementById('musica-fondo');
+            const mensaje = document.getElementById('inicio-msg');
+
+            musica.play().then(() => {
+                mensaje.style.opacity = '0'; // Efecto de fade out
+                setTimeout(() => {
+                    mensaje.style.display = 'none';
+                }, 500); // Espera a que termine la transición
+            }).catch(error => {
+                console.error('El autoplay de audio fue bloqueado:', error);
+                mensaje.style.opacity = '0';
+                setTimeout(() => {
+                    mensaje.style.display = 'none';
+                }, 500);
+            });
+        }
+    </script>
+
+</body>
+
+</html>
