@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Para Chaico con Cariño - Olvidala Sinfónico</title>
     <style>
+        /* [CÓDIGO ANTERIOR SIN CAMBIOS AQUÍ - Estilos para Escritorio (Desktop)] */
+
         /* Estilos generales */
         body {
             display: flex;
@@ -112,8 +114,7 @@
             }
         }
 
-        /* Posicionamiento y animación individual de cada imagen (ajusta los valores top/left/animation para cambiar la posición y el movimiento) */
-        /* He ajustado las posiciones para que estén más distribuidas alrededor del video más grande */
+        /* Posicionamiento y animación individual de cada imagen (AJUSTADAS PARA ESCRITORIO) */
         #img-1 {
             top: 3%;
             left: 15%;
@@ -194,7 +195,7 @@
             /* Sombra más intensa al hover */
         }
 
-        /* Mensaje inicial */
+        /* Mensaje inicial (mantengo los estilos del escritorio) */
         #inicio-msg {
             position: fixed;
             top: 0;
@@ -218,40 +219,119 @@
 
         #inicio-msg h1 {
             font-size: 3em;
-            /* Título más grande */
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.5);
-            /* Sombra al texto */
         }
 
         #inicio-msg p {
             font-size: 1.5em;
-            /* Párrafo más grande */
-            margin-bottom: 30px;
         }
 
         #inicio-msg button {
             padding: 12px 25px;
-            /* Botón más grande */
-            margin-top: 20px;
             font-size: 1.3em;
-            cursor: pointer;
             background-color: #7a98c2;
-            /* Un azul más sinfónico */
-            color: white;
-            border: none;
             border-radius: 8px;
-            /* Bordes más redondeados */
-            box-shadow: 0 8px 20px rgba(122, 152, 194, 0.5);
-            /* Sombra acorde al botón */
             transition: background-color 0.3s ease, transform 0.2s ease;
         }
 
-        #inicio-msg button:hover {
-            background-color: #6582ac;
-            /* Color más oscuro al hover */
-            transform: translateY(-3px);
-            /* Pequeño efecto de elevación */
+        /* ========================================================= */
+        /* === MEDIA QUERY PARA ADAPTAR A DISPOSITIVOS MÓVILES === */
+        /* ========================================================= */
+        @media (max-width: 600px) {
+
+            /* 1. Reducir el tamaño del Video */
+            #chaico-video {
+                width: 200px;
+                /* Video más estrecho */
+                height: 350px;
+                /* Video más corto */
+                border-radius: 15px;
+            }
+
+            /* 2. Reducir el tamaño de las Imágenes */
+            .flotante {
+                width: 80px;
+                /* Imágenes mucho más pequeñas */
+                height: 80px;
+                border-radius: 10px;
+                /* Bordes más sutiles */
+            }
+
+            /* 3. Ajustar el Posicionamiento de las Imágenes */
+            /* Se reposicionan más cerca del centro y se distribuyen en un área más pequeña */
+            #img-1 {
+                top: 5%;
+                left: 5%;
+            }
+
+            #img-2 {
+                top: 15%;
+                right: 5%;
+            }
+
+            #img-3 {
+                bottom: 5%;
+                left: 5%;
+            }
+
+            #img-4 {
+                bottom: 15%;
+                right: 5%;
+            }
+
+            #img-5 {
+                top: 5%;
+                left: 35%;
+            }
+
+            #img-6 {
+                top: 50%;
+                right: 0%;
+            }
+
+            /* Ajustada a la derecha */
+            #img-7 {
+                bottom: 0%;
+                left: 30%;
+            }
+
+            /* Ajustada al fondo */
+            #img-8 {
+                top: 25%;
+                left: 0%;
+            }
+
+            #img-9 {
+                top: 60%;
+                left: 10%;
+            }
+
+            #img-10 {
+                top: 30%;
+                right: 0%;
+            }
+
+            #img-11 {
+                top: 10%;
+                left: 60%;
+            }
+
+            #img-12 {
+                bottom: 10%;
+                left: 15%;
+            }
+
+            /* 4. Reducir el tamaño del texto de inicio */
+            #inicio-msg h1 {
+                font-size: 1.8em;
+            }
+
+            #inicio-msg p {
+                font-size: 1em;
+            }
+
+            #inicio-msg button {
+                font-size: 1em;
+            }
         }
     </style>
 </head>
