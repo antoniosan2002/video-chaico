@@ -245,10 +245,15 @@
                 width: 100vw;
                 height: 100vh;
                 /* Ocupa el 100% de la altura visible */
+                display: flex;
+                /* Necesitas esto aunque ya esté fuera de la media */
                 flex-direction: column;
                 /* Apilar video e imágenes verticalmente */
-                justify-content: flex-start;
-                /* Alinear arriba para dejar espacio a las imágenes */
+                
+
+                /* >>> ESTA LÍNEA ES LA CLAVE PARA CENTRAR HORIZONTALMENTE EN MODO COLUMNA <<< */
+                align-items: center;
+
                 padding-top: 5vh;
                 /* Espacio superior */
             }
@@ -256,17 +261,13 @@
             /* 1. Video Central más Adaptable en Móvil */
             #chaico-video {
                 width: 70%;
-                /* Un porcentaje del ancho */
-                max-width: 250px;
-                /* Tamaño máximo para que no sea enorme */
+                max-width: 150px;
+                /* ¡CAMBIADO a 150px! */
                 height: auto;
                 aspect-ratio: 9/16;
-                /* Mantener la proporción vertical */
                 margin-bottom: 20px;
-                /* Espacio entre video y la "órbita" de imágenes */
                 border-radius: 15px;
                 z-index: 10;
-                /* Asegurar que el video esté encima */
             }
 
             /* 2. Imágenes Flotantes Reducidas y Reorganizadas ALREDEDOR DEL VIDEO */
@@ -298,88 +299,74 @@
                 }
             }
 
-            /* Posicionamiento de imágenes en móvil - RELATIVO AL CONTENEDOR .container */
-            /* Se distribuyen alrededor de la parte superior y media del contenedor */
+            /* El posicionamiento de las imágenes flotantes alrededor del centro funciona por el 'position: absolute' */
+            /* y se mantiene igual para que se vean dispersas. */
             #img-1 {
                 top: 5%;
                 left: 5%;
             }
 
-            /* Arriba izquierda */
             #img-2 {
                 top: 10%;
                 right: 5%;
             }
 
-            /* Arriba derecha */
             #img-3 {
                 top: 20%;
                 left: 0%;
             }
 
-            /* Medio izquierda */
             #img-4 {
                 top: 25%;
                 right: 0%;
             }
 
-            /* Medio derecha */
             #img-5 {
                 top: 15%;
                 left: 30%;
                 animation-duration: 7s;
             }
 
-            /* Arriba cerca del centro */
             #img-6 {
                 top: 40%;
                 right: 10%;
                 animation-duration: 6s;
             }
 
-            /* Más abajo a la derecha */
             #img-7 {
                 bottom: 5%;
                 left: 5%;
             }
 
-            /* Abajo izquierda (ajustado para que no se superponga con video si es muy alto) */
             #img-8 {
                 top: 50%;
                 left: 0%;
                 animation-duration: 8s;
             }
 
-            /* Debajo del video izquierda */
             #img-9 {
                 bottom: 10%;
                 right: 5%;
                 animation-duration: 9s;
             }
 
-            /* Abajo derecha */
             #img-10 {
                 top: 55%;
                 right: 0%;
                 animation-duration: 7.5s;
             }
 
-            /* Debajo del video derecha */
             #img-11 {
                 top: 35%;
                 left: 10%;
                 animation-duration: 6.5s;
             }
 
-            /* Lateral izquierdo del video */
             #img-12 {
                 bottom: 15%;
                 left: 20%;
                 animation-duration: 8.5s;
             }
-
-            /* Fondo cerca del centro */
-
 
             /* 3. Ajustar el tamaño del texto de inicio para móvil */
             #inicio-msg h1 {
