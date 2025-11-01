@@ -39,6 +39,7 @@
         /* Contenedor principal para centrar el video y las imágenes */
         .container {
             position: relative;
+            /* Importante para el posicionamiento absoluto */
             width: 90vw;
             /* Ancho para el contenedor principal */
             height: 90vh;
@@ -48,10 +49,9 @@
             align-items: center;
         }
 
-        /* Estilo para el video */
+        /* Estilo para el video (ESCRITORIO) */
         #chaico-video {
             width: 350px;
-            /* Tamaño del video en escritorio */
             height: 550px;
             border-radius: 25px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
@@ -60,11 +60,11 @@
             border: 5px solid rgba(255, 255, 255, 0.7);
         }
 
-        /* Estilo base para todas las imágenes flotantes */
+        /* Estilo base para todas las imágenes flotantes (ESCRITORIO) */
         .flotante {
             position: absolute;
+            /* Mantiene posicionamiento absoluto para escritorio */
             width: 150px;
-            /* Imágenes más grandes en escritorio */
             height: 150px;
             border-radius: 20px;
             object-fit: cover;
@@ -73,6 +73,8 @@
             border: 3px solid rgba(255, 255, 255, 0.6);
             animation: flotar 8s infinite alternate ease-in-out;
             /* Animación predeterminada */
+            z-index: 5;
+            /* Asegura que estén debajo del video pero visibles */
         }
 
         /* Animación de flotación (movimiento) */
@@ -233,108 +235,163 @@
         /* ========================================================= */
         @media (max-width: 600px) {
             body {
+                overflow-x: hidden;
+                /* Ocultar el scroll horizontal en móvil */
                 overflow-y: auto;
-                /* Permitir scroll vertical si es necesario */
+                /* Permitir scroll vertical si el contenido es mucho */
             }
 
             .container {
-                flex-direction: column;
-                /* Apilar elementos verticalmente */
                 width: 100vw;
-                height: auto;
-                /* Altura auto para que el contenido determine el alto */
-                padding: 20px 0;
-                /* Espacio arriba y abajo */
+                height: 100vh;
+                /* Ocupa el 100% de la altura visible */
+                flex-direction: column;
+                /* Apilar video e imágenes verticalmente */
+                justify-content: flex-start;
+                /* Alinear arriba para dejar espacio a las imágenes */
+                padding-top: 5vh;
+                /* Espacio superior */
             }
 
-            /* 1. Video Central más Adaptable */
+            /* 1. Video Central más Adaptable en Móvil */
             #chaico-video {
-                width: 90%;
-                /* Ocupa casi todo el ancho del móvil */
-                max-width: 300px;
-                /* Pero no más grande de 300px */
+                width: 70%;
+                /* Un porcentaje del ancho */
+                max-width: 250px;
+                /* Tamaño máximo para que no sea enorme */
                 height: auto;
-                /* Altura automática para mantener proporción */
                 aspect-ratio: 9/16;
-                /* Proporción de un video vertical */
+                /* Mantener la proporción vertical */
                 margin-bottom: 20px;
-                /* Espacio debajo del video */
-                border-radius: 10px;
-            }
-
-            /* 2. Imágenes Flotantes Reducidas y Reorganizadas */
-            .flotante {
-                position: static;
-                /* Sacar del posicionamiento absoluto */
-                width: 70px;
-                /* Tamaño pequeño y manejable */
-                height: 70px;
-                border-radius: 10px;
-                margin: 5px;
-                /* Pequeño margen entre ellas */
-                display: inline-block;
-                /* Permitir que estén en la misma línea */
-                animation: none;
-                /* Desactivar la animación de flotación compleja */
-                transform: none;
-                /* Resetear transformaciones */
-                box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
-                /* Sombra más sutil */
-            }
-
-            /* Contenedor para las imágenes flotantes en móvil */
-            .imagenes-movil {
-                display: flex;
-                /* Usar flexbox para organizarlas */
-                flex-wrap: wrap;
-                /* Envolver las imágenes en varias líneas */
-                justify-content: center;
-                /* Centrar las imágenes */
-                width: 95%;
-                /* Ocupa casi todo el ancho */
-                max-width: 320px;
-                /* Pero no más de un ancho razonable */
-                margin-top: 10px;
-                /* Espacio arriba */
-                border: 2px solid rgba(255, 255, 255, 0.3);
-                /* Borde sutil alrededor */
+                /* Espacio entre video y la "órbita" de imágenes */
                 border-radius: 15px;
-                padding: 10px;
-                background-color: rgba(255, 255, 255, 0.1);
-                /* Fondo muy ligero */
+                z-index: 10;
+                /* Asegurar que el video esté encima */
             }
 
-            /* Reposicionar las imágenes dentro del nuevo contenedor .imagenes-movil */
-            /* NO NECESITAS ESTO SI USAS position: static en .flotante */
-            #img-1,
-            #img-2,
-            #img-3,
-            #img-4,
-            #img-5,
-            #img-6,
-            #img-7,
-            #img-8,
-            #img-9,
-            #img-10,
-            #img-11,
-            #img-12 {
-                top: auto;
-                left: auto;
-                right: auto;
-                bottom: auto;
+            /* 2. Imágenes Flotantes Reducidas y Reorganizadas ALREDEDOR DEL VIDEO */
+            .flotante {
+                width: 60px;
+                /* Imágenes mucho más pequeñas */
+                height: 60px;
+                border-radius: 10px;
+                animation: flotar-movil 6s infinite alternate ease-in-out;
+                /* Nueva animación más suave */
+                box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+                /* Sombra más sutil */
+                z-index: 5;
+                /* Estarán por debajo del video */
             }
+
+            /* Nueva animación de flotación para móvil (más compacta) */
+            @keyframes flotar-movil {
+                0% {
+                    transform: translate(0, 0) scale(1);
+                }
+
+                50% {
+                    transform: translate(10px, -5px) scale(1.05);
+                }
+
+                100% {
+                    transform: translate(0, 0) scale(1);
+                }
+            }
+
+            /* Posicionamiento de imágenes en móvil - RELATIVO AL CONTENEDOR .container */
+            /* Se distribuyen alrededor de la parte superior y media del contenedor */
+            #img-1 {
+                top: 5%;
+                left: 5%;
+            }
+
+            /* Arriba izquierda */
+            #img-2 {
+                top: 10%;
+                right: 5%;
+            }
+
+            /* Arriba derecha */
+            #img-3 {
+                top: 20%;
+                left: 0%;
+            }
+
+            /* Medio izquierda */
+            #img-4 {
+                top: 25%;
+                right: 0%;
+            }
+
+            /* Medio derecha */
+            #img-5 {
+                top: 15%;
+                left: 30%;
+                animation-duration: 7s;
+            }
+
+            /* Arriba cerca del centro */
+            #img-6 {
+                top: 40%;
+                right: 10%;
+                animation-duration: 6s;
+            }
+
+            /* Más abajo a la derecha */
+            #img-7 {
+                bottom: 5%;
+                left: 5%;
+            }
+
+            /* Abajo izquierda (ajustado para que no se superponga con video si es muy alto) */
+            #img-8 {
+                top: 50%;
+                left: 0%;
+                animation-duration: 8s;
+            }
+
+            /* Debajo del video izquierda */
+            #img-9 {
+                bottom: 10%;
+                right: 5%;
+                animation-duration: 9s;
+            }
+
+            /* Abajo derecha */
+            #img-10 {
+                top: 55%;
+                right: 0%;
+                animation-duration: 7.5s;
+            }
+
+            /* Debajo del video derecha */
+            #img-11 {
+                top: 35%;
+                left: 10%;
+                animation-duration: 6.5s;
+            }
+
+            /* Lateral izquierdo del video */
+            #img-12 {
+                bottom: 15%;
+                left: 20%;
+                animation-duration: 8.5s;
+            }
+
+            /* Fondo cerca del centro */
+
 
             /* 3. Ajustar el tamaño del texto de inicio para móvil */
             #inicio-msg h1 {
-                font-size: 2em;
+                font-size: 1.8em;
             }
 
             #inicio-msg p {
-                font-size: 1.1em;
+                font-size: 1em;
             }
 
             #inicio-msg button {
-                font-size: 1.1em;
+                font-size: 1em;
                 padding: 10px 20px;
             }
         }
@@ -350,20 +407,19 @@
     <div class="container">
         <video id="chaico-video" src="video de chaico.mp4" autoplay muted loop></video>
 
-        <div class="imagenes-movil">
-            <img id="img-1" class="flotante" src="1.jpg" alt="Imagen de Chaico 1">
-            <img id="img-2" class="flotante" src="2.jpg" alt="Imagen de Chaico 2">
-            <img id="img-3" class="flotante" src="3.jpg" alt="Imagen de Chaico 3">
-            <img id="img-4" class="flotante" src="4.jpg" alt="Imagen de Chaico 4">
-            <img id="img-5" class="flotante" src="5.jpg" alt="Imagen de Chaico 5">
-            <img id="img-6" class="flotante" src="6.jpg" alt="Imagen de Chaico 6">
-            <img id="img-7" class="flotante" src="7.jpg" alt="Imagen de Chaico 7">
-            <img id="img-8" class="flotante" src="8.jpg" alt="Imagen de Chaico 8">
-            <img id="img-9" class="flotante" src="9.jpg" alt="Imagen de Chaico 9">
-            <img id="img-10" class="flotante" src="10.jpg" alt="Imagen de Chaico 10">
-            <img id="img-11" class="flotante" src="11.jpg" alt="Imagen de Chaico 11">
-            <img id="img-12" class="flotante" src="12.jpg" alt="Imagen de Chaico 12">
-        </div>
+        <img id="img-1" class="flotante" src="1.jpg" alt="Imagen de Chaico 1">
+        <img id="img-2" class="flotante" src="2.jpg" alt="Imagen de Chaico 2">
+        <img id="img-3" class="flotante" src="3.jpg" alt="Imagen de Chaico 3">
+        <img id="img-4" class="flotante" src="4.jpg" alt="Imagen de Chaico 4">
+        <img id="img-5" class="flotante" src="5.jpg" alt="Imagen de Chaico 5">
+        <img id="img-6" class="flotante" src="6.jpg" alt="Imagen de Chaico 6">
+        <img id="img-7" class="flotante" src="7.jpg" alt="Imagen de Chaico 7">
+        <img id="img-8" class="flotante" src="8.jpg" alt="Imagen de Chaico 8">
+        <img id="img-9" class="flotante" src="9.jpg" alt="Imagen de Chaico 9">
+        <img id="img-10" class="flotante" src="10.jpg" alt="Imagen de Chaico 10">
+        <img id="img-11" class="flotante" src="11.jpg" alt="Imagen de Chaico 11">
+        <img id="img-12" class="flotante" src="12.jpg" alt="Imagen de Chaico 12">
+
     </div>
 
     <div id="inicio-msg">
